@@ -1,0 +1,20 @@
+<form
+  [formGroup]="searchForm"
+  (ngSubmit)="onSubmit(searchForm.value)">
+  <div class="input-group">
+    <input
+      type="text"
+      id="searchInput"
+      [formControl]="searchInput"
+      class="form-control"
+      placeholder="Artist..."
+      aria-label="Artist...">
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        [disabled]="!searchForm.valid"><i class="fa fa-search"></i></button>
+    </div>
+
+  </div>
+</form>
+
