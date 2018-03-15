@@ -1,5 +1,9 @@
 @import 'variables';
 
+body {
+  background-color: $main-color;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -30,7 +34,6 @@ a:focus {
 }
 
 .btn {
-  border-radius: $button-border-radius;
   cursor: pointer;
 }
 
@@ -40,7 +43,17 @@ a:focus {
 }
 
 .form-control {
-  border-radius: $custom-border-radius;
   line-height: 1.5;
 }
 
+.loader {
+  left: 50%;
+  margin-left: - $app-loader-height / 2;
+  margin-top: $app-loader-padding;
+  position: absolute;
+  width: $app-loader-width;
+}
+
+.content {
+  min-height: 500px;
+}

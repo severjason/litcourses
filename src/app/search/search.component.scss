@@ -1,0 +1,16 @@
+@import "../../scss/variables";
+
+.search-form {
+  margin-top: $basic-margin;
+
+  .app-search-input {
+    max-width: $search-input-max-width;
+    height: $search-button-height;
+  }
+
+  button {
+    width: $search-button-width;
+  }
+}
+
+

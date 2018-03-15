@@ -1,32 +1,23 @@
 // colors
-$active-route-link-color: #014c8c;
-$gray: #f7f7f9;
-$green: #009432;
-$star-color: #f39c12;
+$main-color: #eef7ff;
+$secondary-color: #ccdff0;
 
 // base
 $custom-border-radius: 2px;
-$test-border: 1px solid $active-route-link-color;
+$basic-margin: 15px;
 
-// effects
-$product-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+// inputs
+$search-input-max-width: 350px;
 
-// nav
-$header-padding: 1rem 0;
-$nav-padding: 1rem;
+//buttons
+$search-button-width: 50px;
+$search-button-height: 40px;
 
-// buttons
-$button-border-radius: $custom-border-radius;
-$button-margin: 1rem;
-
+//tracks
+$tracks-min-height: 140px;
 
 // loaders
 $app-loader-height: 120px;
 $app-loader-padding: 120px;
 $app-loader-width: 120px;
 
-// content
-$product-container-padding: 2rem;
-$product-margin: 2rem;
-$info-message-height: 40px;
-$div-padding: 50px;
