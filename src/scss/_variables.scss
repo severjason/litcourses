@@ -1,19 +1,32 @@
 // colors
-$main-color: #eef7ff;
-$secondary-color: #ccdff0;
+$app-main-color: #eef7ff;
+$app-secondary-color: #ccdff0;
+$app-black-color: #000;
+$app-white-color: #fff;
+$app-img-border-color: #01127a;
+$app-additional-text-color: #3f4859;
+$app-music-icon-color: #8f8f8d;
 
 // base
-$custom-border-radius: 2px;
 $basic-margin: 15px;
 
 // inputs
 $search-input-max-width: 350px;
+$search-input-radius: .3rem 0 0 .3rem;
+$search-input-font-size: .9rem;
 
 //buttons
 $search-button-width: 50px;
 $search-button-height: 40px;
+$search-button-color: #f3f3f3;
+$search-button-border-radius: 0 .3rem .3rem 0;
+$search-button-shadow: 0 0 0 .1rem rgba(204, 223, 240, .5);
 
-//tracks
+// borders
+$search-button-border: 1px solid #ced4da;
+$img-border: 3px solid $app-img-border-color;
+
+//track
 $tracks-min-height: 140px;
 
 // loaders
@@ -21,3 +34,4 @@ $app-loader-height: 120px;
 $app-loader-padding: 120px;
 $app-loader-width: 120px;
 
+$test-border: 1px solid #efefef;

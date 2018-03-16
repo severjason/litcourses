@@ -1,7 +1,7 @@
 @import 'variables';
 
 body {
-  background-color: $main-color;
+  background-color: $app-main-color;
 }
 
 img {
@@ -9,11 +9,14 @@ img {
   max-width: 100%;
 }
 
-a:hover,
-a:focus {
-  cursor: pointer;
-  text-decoration: none;
+a {
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
+
 
 .clear {
   clear: both;
@@ -21,7 +24,6 @@ a:focus {
 
 .noselect {
   cursor: default;
-  -webkit-touch-callout: none;
   user-select: none;
 
   &::selection {
@@ -56,4 +58,9 @@ a:focus {
 
 .content {
   min-height: 500px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }

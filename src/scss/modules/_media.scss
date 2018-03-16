@@ -1,29 +1,5 @@
-@media all and (max-width: 1024px) {
-  .product-details {
-    .col {
-      flex-basis: 100%;
-    }
-  }
-}
-
-@media all and (max-width: 480px) {
-  .product-details {
-    .review {
-      .review-date {
-        float: left;
-      }
-    }
-  }
-}
-
-@media all and (min-width: 480px){
-  .review {
-    .col-sm {
-      flex-basis: 0;
-      -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-      flex-grow: 1;
-      max-width: 100%;
-    }
+@media all and (min-width: 1500px) {
+  .container {
+    max-width: 1460px;
   }
 }
