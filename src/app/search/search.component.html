@@ -1,5 +1,5 @@
 <form
-  class="search-form"
+  class="app-search-form"
   [formGroup]="searchForm"
   (ngSubmit)="onSubmit(searchForm.value)">
   <div class="input-group justify-content-center">
@@ -18,7 +18,7 @@
 
   </div>
 </form>
-<div>
+<div class="container">
   <div *ngIf="isLoading()" class="loader" style="left: 50%; margin-left: -60px; margin-top: 120px;
     position: absolute;
     width: 120px;">
@@ -26,11 +26,81 @@
   </div>
   <div *ngIf="noError()">
     <div *ngIf="noTracks()">
-      No results
+      No results found...<br>
+      Please, try another artist.
     </div>
-    <div *ngIf="!noTracks()">
-      <div *ngFor="let tracks of getTrackList()">
-        {{tracks.artistName}}
+    <div *ngIf="trackListReceived() && !noTracks()" class="app-tracks-title container">
+      <div class="row align-items-center">
+        <div class="col media">
+        </div>
+        <div class="col">
+          Artist
+        </div>
+        <div class="col">
+          Track
+        </div>
+        <div class="col">
+          Collection
+        </div>
+        <div class="col">
+          Genre
+        </div>
+        <div class="col text-right">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="trackListReceived()" class="container-fluid ">
+      <div  *ngFor="let track of getTrackList()">
+        <div
+          [ngClass]="{'blue-track' : (getTrackList().indexOf(track) % 2 === 0)}"
+          class="app-track-container">
+          <div (click)="toggleInfo(track)"
+               class="app-track-row row align-items-center">
+            <div class="col-2 media">
+              <img src="{{track.artworkUrl100}}"
+                   alt="{{track.collectionName}} album cover"
+                   title="{{track.collectionName}} album cover"
+                   class="align-self-center">
+            </div>
+            <div class="col-2">
+              {{track.artistName}}
+            </div>
+            <div class="col-2">
+              {{track.trackName}}
+            </div>
+            <div class="col-2">
+              {{track.collectionName}}
+            </div>
+            <div class="col-2">
+              {{track.primaryGenreName}}
+            </div>
+            <div class="col-2 text-right">
+              <i [class]="(track.opened) ? 'toggle-sign fa fa-minus' : 'toggle-sign fa fa-plus'"></i>
+            </div>
+          </div>
+          <div [ngClass]="{'app-track-info-closed' : !track.opened}" class="row align-items-center app-track-row-info">
+            <div class="col-2 col-sm-2">
+            </div>
+            <div class="col-4 col-sm-4">
+              <div class="full-track-name">
+                {{track.artistName}} - {{track.trackName}} <i class="fa fa-music"></i>
+              </div>
+              <div>
+                <span class="font-weight-bold">Collection: </span>{{track.collectionName}}<br>
+                <span class="font-weight-bold">Track Count: </span>{{track.trackCount}}<br>
+                <span class="font-weight-bold">Price: </span>{{track.collectionPrice}} USD<br>
+              </div>
+            </div>
+            <div class="col-4 col-sm-4">
+              <div>
+                <span class="font-weight-bold">Track duration: </span>{{track.trackTimeMillis | date: 'm:ss'}} min<br>
+                <span class="font-weight-bold">Track Price: </span>{{track.trackPrice}}<br>
+              </div>
+            </div>
+            <div class="col-2 col-sm-2">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

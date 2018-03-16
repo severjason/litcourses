@@ -1,16 +1,85 @@
-@import "../../scss/variables";
+@import '../../scss/variables';
 
-.search-form {
+.app-search-form {
   margin-top: $basic-margin;
 
   .app-search-input {
-    max-width: $search-input-max-width;
+    border-radius: $search-input-radius;
+    border-right: 0;
+    color: $app-black-color;
+    font-size: $search-input-font-size;
     height: $search-button-height;
+    max-width: $search-input-max-width;
+
+    &:focus,
+    &:active {
+      border: $search-button-border;
+      border-right: 0;
+      box-shadow: $search-button-shadow;
+    }
   }
 
   button {
+    border: $search-button-border;
+    border-left: 0;
+    border-radius: $search-button-border-radius;
+    color: $search-button-color;
     width: $search-button-width;
+
+    i {
+      color: $app-black-color;
+      font-size: $search-input-font-size;
+    }
   }
 }
 
+.app-track-row {
+  min-height: $tracks-min-height;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    border: $img-border;
+  }
+
+  .toggle-sign {
+    font-size: 2rem;
+  }
+}
+
+.app-track-row-info {
+  font-size: .9rem;
+  min-height: $tracks-min-height;
+
+  .full-track-name {
+    color: $app-additional-text-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  i {
+    color: $app-music-icon-color;
+    font-size: 2rem;
+  }
+}
+
+.blue-track {
+  background-color: $app-secondary-color;
+}
+
+.app-tracks-title {
+  margin-top: $basic-margin * 4;
+}
+
+.app-track-info-closed {
+  display: none;
+}
+
+.app-track-container {
+  &:hover {
+    background-color: darken($app-secondary-color, 5%);
+  }
+}
 

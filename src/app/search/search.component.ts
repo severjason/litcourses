@@ -11,8 +11,9 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 
 export class SearchComponent implements OnInit {
 
-  private _title = 'Find tracks from iTunes';
-  private _trackList: any;
+  private _title = 'Tracks search app';
+  private _trackList: any[];
+  private _trackListReceived: boolean;
   private _loading: boolean;
   private _error = {
     status: false,
@@ -29,6 +30,7 @@ export class SearchComponent implements OnInit {
     this.searchForm = this.fb.group({'searchInput': ['', Validators.required]});
     this.searchInput = this.searchForm.controls['searchInput'];
     this._loading = false;
+    this._trackListReceived = false;
   }
 
   ngOnInit() {
@@ -61,22 +63,22 @@ export class SearchComponent implements OnInit {
   }
 
   private saveTrackList(trackList: any): void {
-    this._trackList = {
-      resultCount: trackList.resultCount,
-      results: trackList.results.map((res) => {
-        return {
-          artistName: res.artistName,
-          artworkUrl100: res.artworkUrl100,
-          collectionName: res.collectionName,
-          collectionPrice: res.collectionPrice,
-          primaryGenreName: res.primaryGenreName,
-          trackName: res.trackName,
-          trackCount: res.trackCount,
-          trackPrice: res.trackPrice,
-          trackTimeMillis: res.trackTimeMillis,
-        }
-      })
-    }
+    this._trackListReceived = true;
+    this._trackList = trackList.map((res) => {
+      return {
+        trackId: res.trackId,
+        artistName: res.artistName,
+        collectionName: res.collectionName,
+        collectionPrice: res.collectionPrice,
+        artworkUrl100: res.artworkUrl100,
+        primaryGenreName: res.primaryGenreName,
+        opened: false,
+        trackName: res.trackName,
+        trackCount: res.trackCount,
+        trackPrice: res.trackPrice,
+        trackTimeMillis: res.trackTimeMillis
+      }
+    })
   }
 
   private setError(message: string): void {
@@ -94,7 +96,8 @@ export class SearchComponent implements OnInit {
   }
 
   private clearTrackList(): void {
-    this._trackList = {}
+    this._trackList = [];
+    this._trackListReceived = false;
   }
 
   public noError(): boolean {
@@ -109,12 +112,16 @@ export class SearchComponent implements OnInit {
     return this._loading;
   }
 
+  public trackListReceived(): boolean {
+    return this._trackListReceived;
+  }
+
   public noTracks(): boolean {
-    return this._trackList.resultCount === 0;
+    return this._trackListReceived && this._trackList.length === 0;
   }
 
   public getTrackList(): any[] {
-    return this._trackList.results;
+    return this._trackList;
   }
 
   public onSubmit(value: any): void {
@@ -125,8 +132,7 @@ export class SearchComponent implements OnInit {
       .subscribe(
         res => {
           this.loaded();
-          this.saveTrackList(res);
-          console.log(this.getTrackList());
+          this.saveTrackList(res.results);
           this.searchForm.controls['searchInput'].reset();
         },
         error => {
@@ -134,5 +140,15 @@ export class SearchComponent implements OnInit {
           this.setError(error.statusText || 'Can`t join the server');
         }
       )
+  }
+
+  public toggleInfo(track: any): void | boolean {
+    if (track.opened === true) {
+      track.opened = false;
+      return false;
+    }
+    this.getTrackList().map((trackFromList: any) => {
+      return (track.trackId === trackFromList.trackId) ? trackFromList.opened = true : trackFromList.opened = false;
+    });
   }
 }
