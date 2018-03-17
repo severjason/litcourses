@@ -64,3 +64,11 @@ a {
   margin-left: 0;
   margin-right: 0;
 }
+
+footer {
+  min-height: 70px;
+
+  .app-copyright {
+    padding: 55px 0 15px;
+  }
+}

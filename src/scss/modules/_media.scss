@@ -1,5 +1,77 @@
-@media all and (min-width: 1500px) {
+@import '../variables';
+
+@media all and (max-width: 960px) {
+
+  .container-fluid {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+}
+
+@media all and (max-width: 768px) {
   .container {
-    max-width: 1460px;
+    max-width: 768px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .container-fluid {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .app-tracks-wrapper {
+    font-size: .75rem;
+
+    .app-tracks-title {
+      margin-top: $basic-margin;
+    }
+
+    .app-track-row {
+      min-height: $tracks-min-height / 2;
+      word-wrap: break-word;
+
+      .toggle-sign {
+        font-size: 1.5rem;
+      }
+    }
+
+    .app-track-row-info {
+      font-size: .65rem;
+      min-height: $tracks-min-height / 2;
+
+      .full-track-name {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+
+    .media {
+      padding: 5px;
+    }
+
+    .app-no-results {
+      font-size: 1rem;
+      margin-top: $basic-margin * 2;
+    }
+
+    .app-error-container {
+      font-size: 1rem;
+      margin-top: $basic-margin * 2;
+    }
+
+  }
+}
+
+@media all and (max-width: 576px) {
+
+  .container-fluid {
+    padding-left: 1px;
+    padding-right: 1px;
   }
 }

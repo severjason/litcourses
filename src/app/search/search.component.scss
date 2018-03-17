@@ -83,3 +83,17 @@
   }
 }
 
+.app-no-results {
+  margin-top: $basic-margin * 4;
+  max-width: $search-input-max-width;
+}
+
+.app-error-container {
+  color: $app-error-text-color;
+  margin-top: $basic-margin * 4;
+  max-width: $search-input-max-width;
+}
+
+.app-tracks-wrapper {
+  max-width: $max-content-width;
+}
