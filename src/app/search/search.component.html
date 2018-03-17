@@ -18,18 +18,20 @@
 
   </div>
 </form>
-<div class="container">
+<div class="container-fluid app-tracks-wrapper">
   <div *ngIf="isLoading()" class="loader" style="left: 50%; margin-left: -60px; margin-top: 120px;
     position: absolute;
     width: 120px;">
     <img src="../../assets/loading.gif" alt="loading gif">
   </div>
   <div *ngIf="noError()">
-    <div *ngIf="noTracks()">
-      No results found...<br>
-      Please, try another artist.
+    <div *ngIf="noTracks()" class="container-fluid app-no-results">
+      <div class="alert text-center">
+        No results found...<br>
+        Please, try another artist.
+      </div>
     </div>
-    <div *ngIf="trackListReceived() && !noTracks()" class="app-tracks-title container">
+    <div *ngIf="trackListReceived() && !noTracks()" class="app-tracks-title container-fluid">
       <div class="row align-items-center">
         <div class="col media">
         </div>
@@ -50,7 +52,7 @@
       </div>
     </div>
     <div *ngIf="trackListReceived()" class="container-fluid ">
-      <div  *ngFor="let track of getTrackList()">
+      <div *ngFor="let track of getTrackList()">
         <div
           [ngClass]="{'blue-track' : (getTrackList().indexOf(track) % 2 === 0)}"
           class="app-track-container">
@@ -94,7 +96,7 @@
             <div class="col-4 col-sm-4">
               <div>
                 <span class="font-weight-bold">Track duration: </span>{{track.trackTimeMillis | date: 'm:ss'}} min<br>
-                <span class="font-weight-bold">Track Price: </span>{{track.trackPrice}}<br>
+                <span class="font-weight-bold">Track Price: </span>{{track.trackPrice}} USD<br>
               </div>
             </div>
             <div class="col-2 col-sm-2">
@@ -105,7 +107,9 @@
     </div>
   </div>
   <div *ngIf="!noError()">
-    {{showErrorMessage()}}
+    <div class="alert text-center app-error-container container-fluid">
+      {{showErrorMessage()}}
+    </div>
   </div>
 
 </div>

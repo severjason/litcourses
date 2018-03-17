@@ -5,7 +5,6 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 
 @Component({
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
   providers: [ApiService],
 })
 
@@ -100,6 +99,10 @@ export class SearchComponent implements OnInit {
     this._trackListReceived = false;
   }
 
+  public clearInput(): void {
+    this.searchForm.controls['searchInput'].reset();
+  }
+
   public noError(): boolean {
     return !this._error.status;
   }
@@ -133,11 +136,12 @@ export class SearchComponent implements OnInit {
         res => {
           this.loaded();
           this.saveTrackList(res.results);
-          this.searchForm.controls['searchInput'].reset();
+          this.clearInput();
         },
         error => {
           this.loaded();
           this.setError(error.statusText || 'Can`t join the server');
+          this.clearInput();
         }
       )
   }
